@@ -12,13 +12,15 @@
 
 {% block despues_del_header %}
 <p>
-    <a href={% url 'crear_celular' %}>Crear celular</a>
+    <a href={% url 'crear_celular' %}>Registrar celular</a>
 </p>
 
 <p>
-    <form action={% url 'lista_celulares' %}>
-        {{form}}
-        <button>Buscar</button>
+    <form action= ''method="get">
+        <p>Buscar Celular</p>
+        <input type = "text" name="marca" id="marca">
+        <input type = "submit" value = "Enviar"> 
+        
     </form>
 </p>
 

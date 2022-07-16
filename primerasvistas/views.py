@@ -38,15 +38,17 @@ def crear_celular(request):
     
     return render(request, 'crear_celular.html', {'form': form_celular})
 
+
 def lista_celulares(request):
-    
-    nombre_de_busqueda = request.GET.get('marca')
-    
-    if nombre_de_busqueda:
-        lista_celulares = Celulares.objects.filter(nombre__icontains=nombre_de_busqueda) 
+                  
+    if request.GET:
+        
+        marcas = request.GET["marca"]
+        buscar = Celulares.objects.filter(marca__icontains=marcas)
+        
     else:
-        lista_celulares = Celulares.objects.all()
-    
-    form = BusquedaCelulares()
-    return render(request, 'lista_celulares.html', {'lista_celulares': lista_celulares, 'form': form})
+         
+        buscar = ""
+         
+    return render(request, 'lista_celulares.html', {'lista_celulares': buscar})
     
